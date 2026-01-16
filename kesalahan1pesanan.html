@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Riwayat Pesanan</title>
+    <style>
+        body { margin:0; background:#2e2e2e; font-family:Arial, Helvetica, sans-serif; }
+        .wrapper { padding:10px; }
+        table { width:100%; border-collapse:collapse; background:#fff; font-size:13px; border-left:4px solid #000; border-right:4px solid #000; border-top:4px solid #000; }
+        th { background:linear-gradient(#555,#333); color:#fff; padding:8px; text-align:center; border:none; }
+        td { padding:6px 8px; text-align:center; background:#fff; border:none; }
+        tr.error td { background:#cfe6b8; }
+        .success { color:#666; }
+        .error-text { color:#c40000; font-weight:bold; }
+        #controls { background:#fff; margin:10px; padding:10px; border:2px solid #000; }
+        #controls input, #controls select { width:220px; margin:5px 0; padding:5px; }
+        #controls button { padding:6px 12px; margin-top:10px; cursor:pointer; }
+        .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; z-index:9999; pointer-events:none; }
+        .popup { width:420px; background:#f1f1f1; border:1px solid #888; box-shadow:0 0 14px rgba(0,0,0,0.9); pointer-events:auto; }
+        .popup-title { height:26px; background:linear-gradient(#eeeeee,#cfcfcf); border-bottom:1px solid #888; }
+        .popup-content { padding:18px; text-align:center; }
+        .popup-icon { font-size:42px; color:red; }
+        .popup-text-title { font-size:26px; font-weight:bold; color:red; margin:6px 0; }
+        .popup-account { font-weight:bold; margin-bottom:12px; }
+        .popup-message { border:1px solid #000; background:#fff; padding:12px; font-size:14px; }
+        .popup-footer { padding:10px; text-align:center; }
+        .popup-footer button { width:70px; padding:4px 0; border:1px solid #666; background:linear-gradient(#eeeeee,#bbbbbb); }
+    </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <table id="orderTable">
+        <thead>
+            <tr>
+                <th>PLATFORM</th>
+                <th>NAMA AKUN</th>
+                <th>NOMOR PESANAN</th>
+                <th>PESANAN</th>
+                <th>NOMINAL</th>
+                <th>STATUS</th>
+                <th>TANGGAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- PUTIH devifebbb002 -->
+            <tr><td>LI-NING</td><td>devifebbb002</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>devifebbb002</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <!-- HIJAU NETHA -->
+            <tr class="error"><td>LI-NING</td><td class="error-text">Netha</td><td class="error-text">20250612184</td><td class="error-text">Satu/Bagian</td><td class="error-text">1.000.000</td><td class="error-text">KESALAHAN</td><td class="error-text">12 Januari 2026</td></tr>
+            <!-- PUTIH PANJANG -->
+            <tr><td>LI-NING</td><td>wardanikusuma</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>wardanikusuma</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>BudiantoBs</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>BudiantoBs</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>BagasRio</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>BagasRio</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>YogaPratama</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>YogaPratama</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>FajarNusa</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>FajarNusa</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>AndrePutra</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>AndrePutra</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>Anita88</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>Anita88</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>Putra22</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>Putra22</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>Koki888</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>Koki888</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>agus787</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>agus787</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>siska000</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>siska000</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>wulana</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+            <tr><td>LI-NING</td><td>wulana</td><td>20250612184</td><td>Satu/Bagian</td><td>880.000</td><td class="success">BERHASIL</td><td>12 Januari 2026</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="controls">
+    <h3>Update Tabel Pesanan</h3>
+
+    <input id="namedevifebbb002" placeholder="Nama devifebbb002">
+    <input id="namewardanikusuma" placeholder="Nama wardanikusuma">
+    <input id="nameBudiantoBs" placeholder="Nama BudiantoBs">
+    <input id="greenName" placeholder="Nama baris hijau">
+    <input id="whiteOrder" placeholder="Nomor Pesanan Putih">
+    <input id="greenOrder" placeholder="Nomor Pesanan Hijau">
+    <input id="whiteNominal" placeholder="Nominal Putih">
+    <input id="greenNominal" placeholder="Nominal Hijau">
+
+    <select id="platformSelect">
+        <option value="">-- Platform --</option>
+        <option>LI-NING</option>
+        <option>SHANGHAI</option>
+        <option>TANG</option>
+        <option>LOUIS VUITTON</option>
+        <option>CHANEL</option>
+        <option>FERRAGAMO</option>
+    </select>
+
+    <select id="orderTypeSelect">
+        <option value="">-- Pesanan --</option>
+        <option>Satu/Bagian</option>
+        <option>Dobel/Bagian</option>
+        <option>Besar/Bagian</option>
+        <option>Kecil/Bagian</option>
+    </select>
+
+    <button onclick="updateTable()">Update Tabel</button>
+</div>
+
+<div class="overlay">
+    <div class="popup">
+        <div class="popup-title"></div>
+        <div class="popup-content">
+            <div class="popup-icon">⚠</div>
+            <div class="popup-text-title">System Error</div>
+            <div class="popup-account">NAMA AKUN : Netha</div>
+            <div class="popup-message">
+                <b>500 System Error</b><br>
+                Terjadi kesalahan dan tidak dapat<br>
+                menyelesaikan permintaan pesanan
+            </div>
+        </div>
+        <div class="popup-footer"><button>OK</button></div>
+    </div>
+</div>
+
+<script>
+const whiteRow1 = document.createElement('select');
+const whiteRow2 = document.createElement('select');
+const greenRow1 = document.createElement('select');
+
+["Satu/Bagian","Dobel/Bagian","Besar/Bagian","Kecil/Bagian"].forEach(opt=>{
+    const o1 = document.createElement('option'); o1.value=o1.textContent=opt; whiteRow1.appendChild(o1);
+    const o2 = document.createElement('option'); o2.value=o2.textContent=opt; whiteRow2.appendChild(o2);
+    const o3 = document.createElement('option'); o3.value=o3.textContent=opt; greenRow1.appendChild(o3);
+});
+
+document.getElementById('controls').appendChild(whiteRow1);
+document.getElementById('controls').appendChild(whiteRow2);
+document.getElementById('controls').appendChild(greenRow1);
+
+function updateTable() {
+    const rows = document.querySelectorAll('#orderTable tbody tr');
+    const platform = document.getElementById('platformSelect').value;
+    const orderType = document.getElementById('orderTypeSelect').value;
+    const greenName = document.getElementById('greenName').value;
+    const whiteOrder = document.getElementById('whiteOrder').value;
+    const greenOrder = document.getElementById('greenOrder').value;
+    const whiteNominal = document.getElementById('whiteNominal').value;
+    const greenNominal = document.getElementById('greenNominal').value;
+
+    const whiteRow1Value = whiteRow1.value;
+    const whiteRow2Value = whiteRow2.value;
+    const greenRow1Value = greenRow1.value;
+
+    let whiteIndex = 0;
+    let greenUpdated = false;
+
+    rows.forEach(row=>{
+        if(platform) row.cells[0].textContent = platform;
+        if(orderType) row.cells[3].textContent = orderType;
+
+        if(row.classList.contains('error')){
+            if(!greenUpdated){
+                if(greenName) row.cells[1].textContent = greenName;
+                if(greenOrder) row.cells[2].textContent = greenOrder;
+                if(greenNominal) row.cells[4].textContent = greenNominal;
+                if(greenRow1Value) row.cells[3].textContent = greenRow1Value;
+                greenUpdated = true;
+            }
+        } else {
+            if(whiteOrder) row.cells[2].textContent = whiteOrder;
+            if(whiteNominal) row.cells[4].textContent = whiteNominal;
+            if(whiteRow1Value && whiteRow2Value) row.cells[3].textContent = (whiteIndex%2===0)?whiteRow1Value:whiteRow2Value;
+            whiteIndex++;
+        }
+
+        row.cells[6].textContent = new Date().getDate().toString().padStart(2,'0')+' Januari '+new Date().getFullYear();
+    });
+
+    if(greenName){
+        document.querySelector('.popup-account').textContent = 'NAMA AKUN : ' + greenName;
+    }
+}
+</script>
+
+</body>
+</html>

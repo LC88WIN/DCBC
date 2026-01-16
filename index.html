@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Information & Confirmation</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.header {
+    display: inline-block;
+    background: linear-gradient(135deg, #000000, #333333);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(135deg, #7a0000, #b00000);
+}
+
+th {
+    padding: 12px;
+    color: #ffd700;
+    font-size: 14px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover td {
+    background: #faf3f3;
+}
+
+.editable {
+    cursor: text;
+    border-bottom: 1px dashed #caa200;
+}
+
+.editable:focus {
+    outline: none;
+    background: #fffbe6;
+}
+
+.status {
+    font-size: 22px;
+    color: #2ecc71;
+}
+
+/* ===== PRINT MODE (SCREENSHOT REAL) ===== */
+@media print {
+    body {
+        background: white !important;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100% !important;
+    }
+
+    #printBtn, #downloadBtn {
+        display: none;
+    }
+}
+</style>
+
+<!-- Library html2canvas untuk screenshot -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- INFORMATION -->
+    <div class="card">
+        <div class="header">INFORMATION</div>
+        <table id="infoTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>NAME</th>
+                    <th>ID AKUN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="editable" contenteditable="true">Dugiyanto</td>
+                    <td class="editable" contenteditable="true">Dugiyatno26</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="editable" contenteditable="true">andre</td>
+                    <td class="editable" contenteditable="true">user1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="editable" contenteditable="true">fitri</td>
+                    <td class="editable" contenteditable="true">user2</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="editable" contenteditable="true">dwi andita zahra</td>
+                    <td class="editable" contenteditable="true">user3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CONFIRMATION -->
+    <div class="card">
+        <div class="header">CONFIRMATION</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>User ID</th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="confirmTable"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- TOMBOL PRINT DAN DOWNLOAD -->
+<div style="text-align:center; margin-bottom:30px;">
+    <button id="printBtn"
+        onclick="window.print()"
+        style="padding:12px 24px;
+        font-size:16px;
+        border:none;
+        border-radius:10px;
+        background:linear-gradient(135deg,#7a0000,#b00000);
+        color:#ffd700;
+        cursor:pointer;">
+        Screenshot (Real / Asli Browser)
+    </button>
+
+    <button id="downloadBtn"
+        style="padding:12px 24px;
+        font-size:16px;
+        border:none;
+        border-radius:10px;
+        background:linear-gradient(135deg,#7a0000,#b00000);
+        color:#ffd700;
+        cursor:pointer;">
+        Download Screenshot
+    </button>
+</div>
+
+<script>
+// ===== UPDATE CONFIRMATION TABLE =====
+function updateConfirmation() {
+    const infoRows = document.querySelectorAll("#infoTable tbody tr");
+    const confirmBody = document.getElementById("confirmTable");
+    confirmBody.innerHTML = "";
+
+    const now = new Date();
+    const dateTime = now.toLocaleDateString("id-ID") + " " + now.toLocaleTimeString("id-ID");
+
+    infoRows.forEach((row, index) => {
+        const name = row.children[1].innerText.trim();
+        const id = row.children[2].innerText.trim();
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${name}</td>
+            <td>${id}</td>
+            <td>${dateTime}</td>
+            <td class="status">✔</td>
+        `;
+        confirmBody.appendChild(tr);
+    });
+}
+
+document.querySelectorAll(".editable").forEach(cell => {
+    cell.addEventListener("input", updateConfirmation);
+});
+
+updateConfirmation();
+
+// ===== DOWNLOAD SCREENSHOT =====
+document.getElementById("downloadBtn").addEventListener("click", () => {
+    const container = document.querySelector(".container");
+    html2canvas(container, {scale:2}).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "screenshot.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Invoice</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0; 
+    color: #000;
+    padding: 20px;
+    position: relative;
+}
+
+body::after {
+    content: "DCBC";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 100px;
+    color: rgba(0,0,0,0.05);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.invoice-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    background-color: #1f376a;
+    color: #f2f2f2;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    border-radius: 5px;
+}
+
+.header .invoice-label {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: #ccc900;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header .date {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 12px;
+}
+
+.header .name {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    font-size: 12px;
+}
+
+p {
+    line-height: 1.5;
+    margin: 15px 0;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    z-index: 1;
+}
+
+.invoice-table th, .invoice-table td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: left;
+}
+
+.invoice-table th {
+    background-color: #a2b0db;
+    font-size: 14px;
+}
+
+.invoice-table tr.option {
+    background-color: #1f376a;
+    color: #fff;
+    font-weight: bold;
+}
+
+.invoice-table tr.option + tr.detail {
+    color: #800000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footer-note {
+    margin-top: 15px;
+}
+
+.update-form {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.update-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.update-form input {
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.update-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1f376a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.update-form button:hover {
+    background-color: #15254a;
+}
+</style>
+</head>
+<body>
+
+<div class="invoice-box" id="invoiceBox">
+    <div class="header">
+        <div class="invoice-label">INVOICE</div>
+        <div class="name" id="headerNama">DIAN</div>
+        <div class="date" id="headerDate"></div>
+        <h3>Prosedur Rencana Penanganan Kesalahan<br>Formulir Persetujuan Khusus Klien</h3>
+    </div>
+
+    <p id="pTamu">Saat pelaksanaan pesanan tugas pedagang, pesanan tidak dibeli sesuai dengan data pedagang, dan kesalahan operasi menyebabkan sistem error pada database pedagang, yang menyebabkan kerugian pada tiga klien yang memiliki data yang sama. Ini berdampak sangat buruk pada kerja sama antara platform pedagang dan perusahaan. Setelah menyelidiki catatan obrolan dan mengumpulkan bukti, klien tersebut lalai dalam proses melakukan pemesanan.</p>
+
+    <table class="invoice-table">
+        <tr>
+            <th id="klienList">KLIEN : DIAN - devifebbb002 - wardanikusuma - BudiantoBs</th>
+        </tr>
+        <tr class="option">
+            <td id="opsi1Text">OPSI 1 : Pesanan ¥0 + (40%) Komisi ¥0</td>
+        </tr>
+        <tr class="detail">
+            <td>OPSI 1 Waktu Penyelesaian 10-30 Menit</td>
+        </tr>
+        <tr class="option">
+            <td id="opsi2Text">OPSI 2 : Pesanan ¥0 + (20%) Komisi ¥0</td>
+        </tr>
+        <tr class="detail">
+            <td>OPSI 2 Waktu Penyelesaian 60-120 Menit</td>
+        </tr>
+    </table>
+
+    <p class="footer-note">Opsi pesanan bertingkat di atas adalah kombinasi dari beberapa pesanan dasar dan dibagi menjadi pesanan keuntungan dan pesanan pembayaran. Setiap pesanan dari 2 - 3 Pesanan Bertingkat perlu disimpan sebelumnya dan dibeli sesuai dengan data yang ditentukan. Keuntungan pertama adalah dibayar, dan setiap kesalahan selama periode mengarah ke pesanan. Jika Anda tidak dapat menyelesaikannya, Anda tidak dapat menghubungi pedagang untuk mengubahnya. Anda dapat menyelesaikan pembayaran sebelum Anda menyelesaikan pesanan. Jika Anda tidak menyelesaikan di tengah jalan pesanan itu akan dianggap sebagai pengabaian otomatis dan tidak ada pembayaran keuntungan.</p>
+
+    <p class="footer-note">Peserta pelatihan menyadari bahwa formulir ini adalah formulir persetujuan khusus perusahaan setelah kesalahan operasi klien. Sebelum klien mengisi formulir persetujuan khusus, tidak ada pembayaran yang dilakukan, pokok uang.</p>
+</div>
+
+<!-- Form Update Invoice -->
+<div class="update-form">
+    <h3>Form Update Invoice</h3>
+    <label>Nama Tamu:</label>
+    <input type="text" id="namaTamu" value="Dian">
+
+    <label>Nama Kompor 1:</label>
+    <input type="text" id="kompor1" value="devifebbb002">
+
+    <label>Nama Kompor 2:</label>
+    <input type="text" id="kompor2" value="wardanikusuma">
+
+    <label>Nama Kompor 3:</label>
+    <input type="text" id="kompor3" value="BudiantoBs">
+
+    <label>Nominal Opsi 1:</label>
+    <input type="number" id="nominal1" value="0">
+
+    <label>Persentase Opsi 1 (%):</label>
+    <input type="number" id="persen1" value="40">
+
+    <label>Nominal Opsi 2:</label>
+    <input type="number" id="nominal2" value="0">
+
+    <label>Persentase Opsi 2 (%):</label>
+    <input type="number" id="persen2" value="20">
+
+    <button onclick="updateInvoice()">Update Invoice</button>
+    <button onclick="downloadInvoice()">Download Invoice</button>
+</div>
+
+<!-- html2canvas library -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<script>
+// Fungsi update invoice
+function updateInvoice() {
+    const namaTamu = document.getElementById('namaTamu').value;
+    const kompor1 = document.getElementById('kompor1').value;
+    const kompor2 = document.getElementById('kompor2').value;
+    const kompor3 = document.getElementById('kompor3').value;
+    const nominal1 = parseFloat(document.getElementById('nominal1').value);
+    const nominal2 = parseFloat(document.getElementById('nominal2').value);
+    const persen1 = parseFloat(document.getElementById('persen1').value);
+    const persen2 = parseFloat(document.getElementById('persen2').value);
+
+    const komisi1 = nominal1 * persen1 / 100;
+    const komisi2 = nominal2 * persen2 / 100;
+
+    document.getElementById('headerNama').innerText = namaTamu;
+    document.getElementById('klienList').innerText = `KLIEN : ${namaTamu} - ${kompor1} - ${kompor2} - ${kompor3}`;
+    document.getElementById('opsi1Text').innerText = `OPSI 1 : Pesanan ¥. ${nominal1.toLocaleString('id-ID')} + (${persen1}%) Komisi ¥. ${komisi1.toLocaleString('id-ID')}`;
+    document.getElementById('opsi2Text').innerText = `OPSI 2 : Pesanan ¥. ${nominal2.toLocaleString('id-ID')} + (${persen2}%) Komisi ¥. ${komisi2.toLocaleString('id-ID')}`;
+}
+
+// Tanggal otomatis
+window.onload = function() {
+    const today = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('headerDate').innerText = today.toLocaleDateString('id-ID', options);
+};
+
+// Fungsi download invoice sebagai gambar
+function downloadInvoice() {
+    const invoice = document.getElementById('invoiceBox');
+    html2canvas(invoice, { scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'invoice.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+}
+</script>
+
+</body>
+</html>
