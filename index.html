@@ -57,7 +57,7 @@ iframe {
     <button onclick="openFrame('invoice')">Invoice</button>
     <button onclick="openFrame('kesalahan')">Kesalahan</button>
     <button onclick="openFrame('kesalahan1')">Kesalahan 1 Pesanan</button>
-    <button onclick="openFrame('sinkronisasi')">Information</button>
+    <button onclick="openFrame('info')">Information</button>
     <button onclick="openFrame('predeposit')">PreDeposit</button>
 </div>
 
@@ -67,19 +67,17 @@ iframe {
     <iframe id="kesalahan" src="kesalahan.html"></iframe>
     <iframe id="kesalahan1" src="kesalahan1pesanan.html"></iframe>
     <iframe id="info" src="sinkronisasi.html"></iframe>
-    <iframe id="info" src="predeposit.html"></iframe>
+    <iframe id="predeposit" src="predeposit.html"></iframe>
 </div>
 
 <script>
 function openFrame(id) {
     document.querySelectorAll("iframe").forEach(f => f.style.display = "none");
-    document.getElementById(id).style.display = "block";
+    const frame = document.getElementById(id);
+    if(frame) frame.style.display = "block";
 }
-openFrame("invoice"); // default
+openFrame("invoice"); // default saat halaman dibuka
 </script>
 
 </body>
 </html>
-
-
-
