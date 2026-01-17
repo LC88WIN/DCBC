@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Tugas Tangga</title>
+<title>Tugas Tangga Fix Screenshot</title>
 
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
@@ -25,6 +25,12 @@ body{
         0 25px 45px rgba(0,0,0,.3),
         inset 0 1px 0 rgba(255,255,255,.6);
     overflow:hidden;
+}
+
+/* HILANGKAN SHADOW KETIKA SCREENSHOT */
+#captureArea{
+    background:#ffffff;
+    box-shadow:none !important;
 }
 
 /* ===== HEADER ===== */
@@ -64,6 +70,7 @@ body{
     font-weight:bold;
     min-width:250px;
     outline:none;
+    text-align:center;
 }
 
 .query-icon{
@@ -266,7 +273,7 @@ SISTEM MANAJEMEN KOMPREHENSIF PESANAN DISTRIBUSI ONLINE TERMINAL APP
 
 <div class="footer">
     <img src="dcbclogo.png" alt="DCBC Logo">
-    <div style="max-width:900px; line-height:1.6;">
+    <div style="max-width:900px; line-height:1.6; text-align:center;">
         <b>Catatan:</b> Semua pesanan masuk ke sistem data besar, harap pandu pelanggan untuk membuat pesanan nyata,
         jika ada pesanan palsu, mereka akan didiskualifikasi, karena data dalam database tunggal terlalu besar,
         untuk mencegah kebocoran perintah Pesanan anggota, kata sandi Pesanan yang diperbarui adalah kata sandi rahasia,
@@ -278,7 +285,7 @@ SISTEM MANAJEMEN KOMPREHENSIF PESANAN DISTRIBUSI ONLINE TERMINAL APP
 
 <!-- ================== INPUT ================== -->
 <div class="input-box">
-<h3>Input Sinkronisasi Data</h3>
+<h3 style="text-align:center;">Input Sinkronisasi Data</h3>
 
 <div class="input-grid">
 <input type="number" placeholder="Nominal Pesanan 1" oninput="update(1,this.value)">
@@ -315,8 +322,13 @@ function hitung(i){
     let p=Math.round(n*k/100);
     document.getElementById("profit"+i).innerText="¥"+p.toLocaleString();
 }
+
 function download(){
-    html2canvas(document.getElementById("captureArea")).then(c=>{
+    html2canvas(document.getElementById("captureArea"),{
+        backgroundColor:"#ffffff",
+        scale:2,
+        useCORS:true
+    }).then(c=>{
         let a=document.createElement("a");
         a.href=c.toDataURL("image/png");
         a.download="pesanan.png";
