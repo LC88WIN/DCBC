@@ -6,13 +6,11 @@
 <title>Reward Istimewa</title>
 
 <style>
-/* RESET */
 * { box-sizing: border-box; margin:0; padding:0; }
-
 body {
     margin: 0;
     font-family: 'Poppins', Arial, sans-serif;
-    background: #000;
+    background: #8b0000;
     color: #fff;
 }
 
@@ -54,13 +52,18 @@ body {
         inset 0 0 50px rgba(255, 255, 255, 0.2);
 }
 
-/* LOGO & Tanggal */
+/* NON BLUR MODE SAAT SCREENSHOT */
+.no-blur * {
+    backdrop-filter: none !important;
+    background: transparent !important;
+}
+
+/* LOGO & TANGGAL */
 .logo-left {
     position: absolute;
     top: 10px;
     left: 10px;
     width: 105px;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.7));
 }
 .header-date {
     position: absolute;
@@ -71,11 +74,6 @@ body {
     border-radius: 20px;
     font-weight: bold;
     backdrop-filter: blur(3px);
-    animation: pulse 2s infinite ease-in-out;
-}
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 4px rgba(255,255,255,0.5); }
-  50% { box-shadow: 0 0 12px rgba(255,255,255,0.9); }
 }
 
 /* TABEL */
@@ -88,13 +86,7 @@ table {
 table th, table td {
     border: 1px solid #ffce55;
     padding: 10px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(2px);
-}
-table th {
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 0.5px;
+    background: rgba(255,255,255,0.15);
 }
 .status-ready {
     color: #00ff73;
@@ -110,18 +102,12 @@ table th {
     text-align: left;
     font-size: 14px;
     margin-top: 15px;
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
 }
 
 /* LOGO BANK */
 .bank-footer img {
     height: 45px;
     margin: 5px;
-    filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
-    transition: transform .3s;
-}
-.bank-footer img:hover {
-    transform: scale(1.1);
 }
 
 /* BOX INPUT */
@@ -132,24 +118,19 @@ table th {
     margin: 25px auto;
     border-radius: 14px;
     padding: 20px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 0 18px rgba(255,215,115,0.4);
-    transform-style: preserve-3d;
-    transition: transform .3s, box-shadow .3s;
-}
-.box-input:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(255,230,140,0.7);
 }
 
+/* INPUTS */
 .box-input input {
     padding: 6px;
     width: 120px;
     margin: 4px;
     border-radius: 4px;
     border: none;
+    font-size: 15px;
 }
 
+/* BUTTONS */
 button {
     padding: 10px 18px;
     margin-top: 12px;
@@ -159,12 +140,9 @@ button {
     font-weight: bold;
     background: linear-gradient(145deg,#ffeb7a,#ffd54a);
     color: #700;
-    box-shadow: 0 0 8px rgba(255,200,0,0.6);
-    transition: transform .2s, box-shadow .3s;
 }
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(255,255,150,0.9);
+    opacity: .9;
 }
 </style>
 </head>
@@ -230,10 +208,11 @@ button:hover {
     <button onclick="takeShot()">Unduh Screenshot</button>
 </div>
 
+<!-- HTML2CANVAS -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
-// Realtime Tanggal
+// Realtime date
 function updateDate() {
     const now = new Date();
     const hari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"][now.getDay()];
@@ -241,9 +220,10 @@ function updateDate() {
     document.getElementById("realtime-date").innerText =
         `${hari}, ${now.getDate()} ${bulan} ${now.getFullYear()}`;
 }
-setInterval(updateDate, 1000); updateDate();
+setInterval(updateDate, 1000);
+updateDate();
 
-// Sync Tabel
+// Update table
 function syncTable() {
     const t = document.getElementById("tbody");
     t.innerHTML = "";
@@ -266,12 +246,21 @@ function syncTable() {
 }
 syncTable();
 
-// Screenshot
+// Screenshot tanpa efek pecah
 function takeShot() {
-    html2canvas(document.getElementById("box1")).then(canvas=>{
+    const box = document.getElementById("box1");
+    box.classList.add("no-blur");
+
+    html2canvas(box, {
+        scale: 3,
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: null
+    }).then(canvas => {
+        box.classList.remove("no-blur");
         let link = document.createElement("a");
         link.download = "reward.png";
-        link.href = canvas.toDataURL();
+        link.href = canvas.toDataURL("image/png");
         link.click();
     });
 }
