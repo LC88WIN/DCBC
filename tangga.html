@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tugas Tangga</title>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<style>
+/* ===== GLOBAL ===== */
+body{
+    font-family: Arial, sans-serif;
+    background:linear-gradient(135deg,#e5e5e5,#f9f9f9);
+    margin:0;
+    padding:20px;
+}
+
+/* ===== CARD UTAMA ===== */
+.container{
+    width:1200px;
+    margin:auto;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.3),
+        inset 0 1px 0 rgba(255,255,255,.6);
+    overflow:hidden;
+}
+
+/* ===== HEADER ===== */
+.header{
+    background:linear-gradient(180deg,#8b0000,#520000);
+    color:#fff;
+    text-align:center;
+    padding:15px;
+    font-weight:bold;
+    letter-spacing:.6px;
+    text-shadow:0 3px 6px rgba(0,0,0,.6);
+}
+
+/* ===== TITLE BAR ===== */
+.title-bar{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:12px;
+    background:linear-gradient(180deg,#f4a85f,#d2691e);
+    box-shadow:inset 0 -4px 8px rgba(0,0,0,.25);
+}
+
+/* QUERY BOX */
+.query-wrapper{
+    display:flex;
+    align-items:center;
+    background:#fff;
+    border-radius:10px;
+    border:2px solid #333;
+    box-shadow:0 5px 10px rgba(0,0,0,.3);
+    overflow:hidden;
+}
+
+.query-box{
+    padding:10px 12px;
+    font-weight:bold;
+    min-width:250px;
+    outline:none;
+}
+
+.query-icon{
+    background:#333;
+    padding:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.query-icon img{
+    width:18px;
+    height:18px;
+}
+
+/* TITLE TEXT */
+.title-text{
+    flex:1;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    color:#002366;
+    text-shadow:0 1px 1px rgba(255,255,255,.7);
+}
+
+/* ===== TABLE ===== */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:linear-gradient(180deg,#ffd4a8,#f4b183);
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,.3);
+}
+
+th,td{
+    border:1px solid #333;
+    padding:10px;
+    text-align:center;
+}
+
+tbody tr{
+    transition:.25s;
+}
+
+tbody tr:hover{
+    background:#fff3e0;
+    transform:translateY(-2px);
+    box-shadow:0 8px 16px rgba(0,0,0,.2);
+}
+
+.ready{
+    color:#0a8a00;
+    font-weight:bold;
+}
+
+.profit{
+    font-weight:bold;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+    background:linear-gradient(180deg,#6b0000,#3f0000);
+    color:#ffd700;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    text-align:center;
+    font-size:13px;
+}
+
+.footer img{
+    width:90px;
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,.6));
+}
+
+/* ===== INPUT BOX ===== */
+.input-box{
+    width:1200px;
+    margin:30px auto;
+    padding:20px;
+    background:#fff7e6;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.input-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+input{
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #aaa;
+    box-shadow:inset 0 2px 4px rgba(0,0,0,.2);
+}
+
+/* ===== BUTTON ===== */
+button{
+    margin-top:20px;
+    padding:14px 28px;
+    background:linear-gradient(180deg,#9b0000,#540000);
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:
+        0 6px 0 #300000,
+        0 12px 25px rgba(0,0,0,.35);
+}
+
+button:active{
+    transform:translateY(4px);
+    box-shadow:0 2px 0 #300000;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================== CAPTURE AREA ================== -->
+<div class="container" id="captureArea">
+
+<div class="header">
+SISTEM MANAJEMEN KOMPREHENSIF PESANAN DISTRIBUSI ONLINE TERMINAL APP
+</div>
+
+<div class="title-bar">
+
+    <div class="query-wrapper">
+        <div class="query-box" contenteditable="true">
+            BPLK012026-319BLPK25
+        </div>
+        <div class="query-icon">
+            <img src="search.png" alt="Search">
+        </div>
+    </div>
+
+    <div class="title-text">
+        PESANAN BERTINGKAT (TINGKAT KE-DUA) DAFTAR LABA
+    </div>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>NO. PESANAN</th>
+<th>TIPE PESANAN</th>
+<th>READY</th>
+<th>JUMLAH ISI ULANG</th>
+<th>TINGKAT KOMISI</th>
+<th>RASIO JAMINAN</th>
+<th>JUMLAH KEUNTUNGAN</th>
+<th>STATUS</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Pesanan No.1</td>
+<td>Data Rewards (Tipe Isi Ulang)</td>
+<td class="ready">✔</td>
+<td id="nom1">¥4.500</td>
+<td id="kom1">30%</td>
+<td id="jam1">80%</td>
+<td id="profit1" class="profit">¥1.350</td>
+<td class="ready">READY</td>
+</tr>
+
+<tr>
+<td>Pesanan No.2</td>
+<td>Data Rewards (Tipe Isi Ulang)</td>
+<td class="ready">✔</td>
+<td id="nom2">¥8.850</td>
+<td id="kom2">45%</td>
+<td id="jam2">100%</td>
+<td id="profit2" class="profit">¥3.983</td>
+<td class="ready">READY</td>
+</tr>
+
+<tr>
+<td>Pesanan No.3</td>
+<td>Data Rewards (Tipe Isi Ulang)</td>
+<td class="ready">✔</td>
+<td id="nom3">¥9.411</td>
+<td id="kom3">50%</td>
+<td id="jam3">100%</td>
+<td id="profit3" class="profit">¥4.706</td>
+<td class="ready">READY</td>
+</tr>
+</tbody>
+</table>
+
+<div class="footer">
+    <img src="dcbclogo.png" alt="DCBC Logo">
+    <div style="max-width:900px; line-height:1.6;">
+        <b>Catatan:</b> Semua pesanan masuk ke sistem data besar, harap pandu pelanggan untuk membuat pesanan nyata,
+        jika ada pesanan palsu, mereka akan didiskualifikasi, karena data dalam database tunggal terlalu besar,
+        untuk mencegah kebocoran perintah Pesanan anggota, kata sandi Pesanan yang diperbarui adalah kata sandi rahasia,
+        dan anggota diberitahu untuk melarang posting di grup komunikasi!
+    </div>
+</div>
+
+</div>
+
+<!-- ================== INPUT ================== -->
+<div class="input-box">
+<h3>Input Sinkronisasi Data</h3>
+
+<div class="input-grid">
+<input type="number" placeholder="Nominal Pesanan 1" oninput="update(1,this.value)">
+<input type="number" placeholder="Komisi % Pesanan 1" oninput="kom(1,this.value)">
+<input type="number" placeholder="Jaminan % Pesanan 1" oninput="jam(1,this.value)">
+
+<input type="number" placeholder="Nominal Pesanan 2" oninput="update(2,this.value)">
+<input type="number" placeholder="Komisi % Pesanan 2" oninput="kom(2,this.value)">
+<input type="number" placeholder="Jaminan % Pesanan 2" oninput="jam(2,this.value)">
+
+<input type="number" placeholder="Nominal Pesanan 3" oninput="update(3,this.value)">
+<input type="number" placeholder="Komisi % Pesanan 3" oninput="kom(3,this.value)">
+<input type="number" placeholder="Jaminan % Pesanan 3" oninput="jam(3,this.value)">
+</div>
+
+<button onclick="download()">Unduh Screenshot</button>
+</div>
+
+<script>
+function update(i,v){
+    document.getElementById("nom"+i).innerText="¥"+Number(v||0).toLocaleString();
+    hitung(i);
+}
+function kom(i,v){
+    document.getElementById("kom"+i).innerText=(v||0)+"%";
+    hitung(i);
+}
+function jam(i,v){
+    document.getElementById("jam"+i).innerText=(v||0)+"%";
+}
+function hitung(i){
+    let n=document.getElementById("nom"+i).innerText.replace(/[¥,]/g,'');
+    let k=document.getElementById("kom"+i).innerText.replace('%','');
+    let p=Math.round(n*k/100);
+    document.getElementById("profit"+i).innerText="¥"+p.toLocaleString();
+}
+function download(){
+    html2canvas(document.getElementById("captureArea")).then(c=>{
+        let a=document.createElement("a");
+        a.href=c.toDataURL("image/png");
+        a.download="pesanan.png";
+        a.click();
+    });
+}
+</script>
+
+</body>
+</html>
