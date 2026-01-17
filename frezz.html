@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reward Istimewa</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000; /* Halaman netral */
+    color: #fff;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* BOX 1 DENGAN BACKGROUND MERAH GRADIENT & GAMBAR */
+.box {
+    width: 100%;
+    max-width: 950px;
+    border: 2px solid #ffcd45;
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    text-align: center;
+
+    /* GRADIENT MERAH CERAH + GAMBAR */
+    background:
+        linear-gradient(135deg, rgba(149, 0, 0), rgba(160,0,0,0.95)),
+        url('dcbclogo.png') center/cover no-repeat;
+}
+
+.logo-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+}
+
+.header-date {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: rgba(255,255,255,0.25);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+h2 { margin: 8px 0; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    margin-top: 30px;
+}
+table th, table td {
+    border: 1px solid #ffce55;
+    padding: 10px;
+}
+.status-ready {
+    color: #00ff44;
+    font-weight: bold;
+}
+
+.note {
+    background: rgba(255,255,255,0.15);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.bank-footer img {
+    height: 45px;
+    margin: 5px;
+}
+
+/* BOX 2 */
+.box-input {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.15);
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+.box-input input {
+    padding: 6px;
+    width: 120px;
+    margin: 4px;
+    border-radius: 4px;
+    border: none;
+}
+button {
+    padding: 10px 18px;
+    margin-top: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    background: #ffd54a;
+    color: #700;
+}
+button:hover {
+    background: #ffec7f;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BOX 1 -->
+<div class="center">
+<div class="box" id="box1">
+
+    <img src="DCBC.png" class="logo-left">
+    <div class="header-date" id="realtime-date"></div>
+
+    <h2>SISTEM MANAJEMEN KOMPRESIF</h2>
+    <p>Terminal APP sistem online perusahaan & pedagang dengan pesanan berkualitas tinggi</p>
+    <h2 style="color:#ffd966;">Reward Istimewa Tingkat Pertama</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nomor Pesanan</th><th>Tipe Pesanan</th>
+                <th>Nominal</th><th>Komisi</th>
+                <th>Rasio Jaminan</th><th>Penarikan</th><th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr><td>Pesanan Keberuntungan No.1</td><td>Tugas Opsi 1 : Tipe Isi Ulang</td><td>¥5.300</td><td>30%</td><td>70%</td><td>¥6.890</td><td class="status-ready">Ready</td></tr>
+            <tr><td>Pesanan Keberuntungan No.2</td><td>Tugas Opsi 2 : Tipe Isi Ulang</td><td>¥6.880</td><td>45%</td><td>85%</td><td>¥9.976</td><td class="status-ready">Ready</td></tr>
+            <tr><td>Pesanan Keberuntungan No.3</td><td>Tugas Opsi 3 : Tipe Isi Ulang</td><td>¥7.863</td><td>50%</td><td>100%</td><td>¥11.795</td><td class="status-ready">Ready</td></tr>
+        </tbody>
+    </table>
+
+    <div class="note">
+        <ul>
+            <li>Setiap pesanan masuk ke sistem data besar, harap pandu pelanggan untuk membuat pesanan nyata.</li>
+            <li>Jika ada pesanan palsu, data akan disaring otomatis mencegah beban sistem.</li>
+            <li>Kata sandi Pesanan diperbarui secara berkala dan bersifat rahasia.</li>
+        </ul>
+    </div>
+
+    <div class="bank-footer">
+        <img src="BCA.JPG"><img src="BNI.JPG"><img src="BRI.JPG">
+        <img src="BSI.JPG"><img src="BTN.JPG"><img src="DANAMON.JPG">
+        <img src="MANDIRI.JPG"><img src="PERMATA.JPG">
+    </div>
+
+</div>
+</div>
+
+<!-- BOX 2 INPUT -->
+<div class="box-input">
+    <p><b>Sinkronisasi nilai tabel :</b></p>
+
+    No1 Nominal <input id="n1" type="number" value="5300">
+    Komisi <input id="k1" type="number" value="30">
+    Rasio <input id="r1" type="number" value="70"><br>
+
+    No2 Nominal <input id="n2" type="number" value="6880">
+    Komisi <input id="k2" type="number" value="45">
+    Rasio <input id="r2" type="number" value="85"><br>
+
+    No3 Nominal <input id="n3" type="number" value="7863">
+    Komisi <input id="k3" type="number" value="50">
+    Rasio <input id="r3" type="number" value="100"><br>
+
+    <button onclick="syncTable()">Perbarui Tabel</button>
+    <button onclick="takeShot()">Unduh Screenshot</button>
+</div>
+
+<!-- HTML2CANVAS -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<script>
+// Isi Tanggal Realtime
+function updateDate() {
+    const now = new Date();
+    const hari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"][now.getDay()];
+    const bulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"][now.getMonth()];
+    document.getElementById("realtime-date").innerText =
+        `${hari}, ${now.getDate()} ${bulan} ${now.getFullYear()}`;
+}
+setInterval(updateDate, 1000);
+updateDate();
+
+// Update tabel Box 1
+function syncTable() {
+    const t = document.getElementById("tbody");
+    t.innerHTML = "";
+    for(let i=1;i<=3;i++){
+        let n = +document.getElementById(`n${i}`).value;
+        let k = +document.getElementById(`k${i}`).value;
+        let wd = Math.round(n * (1 + k/100));
+        let r = document.getElementById(`r${i}`).value;
+        t.innerHTML += `
+            <tr>
+                <td>Pesanan Keberuntungan No.${i}</td>
+                <td>Tugas Opsi ${i} : Tipe Isi Ulang</td>
+                <td>¥${n.toLocaleString()}</td>
+                <td>${k}%</td>
+                <td>${r}%</td>
+                <td>¥${wd.toLocaleString()}</td>
+                <td class="status-ready">Ready</td>
+            </tr>`;
+    }
+}
+
+// Screenshot Box 1
+function takeShot() {
+    html2canvas(document.getElementById("box1")).then(canvas=>{
+        let link = document.createElement("a");
+        link.download = "reward.png";
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+</script>
+
+</body>
+</html>
